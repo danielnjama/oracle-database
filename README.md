@@ -786,45 +786,45 @@ INSERT INTO enrollments VALUES
 
 Practice Questions
 1. Basic Queries
-Retrieve all columns from the students table.
+- Retrieve all columns from the students table.
 
-Retrieve the first_name and last_name of all active students.
+- Retrieve the first_name and last_name of all active students.
 
-Retrieve the names of students who are older than 20.
+- Retrieve the names of students who are older than 20.
 
 2. Filtering and Sorting
-Retrieve all students sorted by their last_name in ascending order.
+- Retrieve all students sorted by their last_name in ascending order.
 
-Retrieve the course_name and instructor for courses with more than 3 credits.
+- Retrieve the course_name and instructor for courses with more than 3 credits.
 
-Retrieve the student_id and course_id from the enrollments table where the enrollment date is after 2023-09-02.
+- Retrieve the student_id and course_id from the enrollments table where the enrollment date is after 2023-09-02.
 
 3. Joins
-Retrieve the first_name, last_name, and course_name for all students enrolled in courses.
+- Retrieve the first_name, last_name, and course_name for all students enrolled in courses.
 
-Retrieve the names of students who are enrolled in the course "Mathematics".
+- Retrieve the names of students who are enrolled in the course "Mathematics".
 
-Retrieve the course_name and the number of students enrolled in each course.
+- Retrieve the course_name and the number of students enrolled in each course.
 
 4. Aggregation
-Retrieve the total number of active students.
+- Retrieve the total number of active students.
 
-Retrieve the average age of students.
+- Retrieve the average age of students.
 
-Retrieve the course_name and the total credits of courses taught by "Dr. Smith".
+- Retrieve the course_name and the total credits of courses taught by "Dr. Smith".
 
 5. Subqueries
-Retrieve the names of students who are not enrolled in any course.
+- Retrieve the names of students who are not enrolled in any course.
 
-Retrieve the course_name of courses that have no enrollments.
+- Retrieve the course_name of courses that have no enrollments.
 
-Retrieve the names of students who are enrolled in more than one course.
+- Retrieve the names of students who are enrolled in more than one course.
 
 6. Data Manipulation
-Update the grade of student with student_id = 3 to 11.
+- Update the grade of student with student_id = 3 to 11.
 
-Delete all enrollments for the course "History".
+- Delete all enrollments for the course "History".
 
-Insert a new student with the following details: student_id = 6, first_name = 'Eva', last_name = 'Green', age = 19, grade = 10, is_active = true.
+- Insert a new student with the following details: student_id = 6, first_name = 'Eva', last_name = 'Green', age = 19, grade = 10, is_active = true.
 
 
