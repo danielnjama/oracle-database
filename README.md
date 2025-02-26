@@ -540,7 +540,7 @@ This module focuses on hands-on implementation of Oracle Database concepts, incl
 
 ---
 
-# Oracle SQL Course Outline
+# Oracle SQL Hands-on 
 
 ## 1. Introduction to Oracle SQL
 - Overview of SQL and its importance
