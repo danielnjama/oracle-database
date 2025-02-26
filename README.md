@@ -719,5 +719,112 @@ This module focuses on hands-on implementation of Oracle Database concepts, incl
 - **Importing Data**
   - Example: `IMPDP username/password DIRECTORY=dir_name DUMPFILE=file_name.dmp TABLES=table_name;`
 
+---
+
+# SQL Tables and Practice Questions
+
+## Table Creation
+
+### 1. `students` Table
+```sql
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    age INT,
+    grade INT,
+    is_active BOOLEAN
+);
+```
+
+### 2. Courses Table
+```sql
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100),
+    instructor VARCHAR(50),
+    credits INT
+);
+```
+
+### 3. Enrollment Table
+```sql
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+```
+### Insert Data:
+````sql
+INSERT INTO students VALUES
+(1, 'John', 'Doe', 20, 12, true),
+(2, 'Jane', 'Smith', 19, 11, true),
+(3, 'Alice', 'Johnson', 21, 12, false),
+(4, 'Bob', 'Brown', 18, 10, true),
+(5, 'Charlie', 'Davis', 22, 12, false);
+
+
+INSERT INTO courses VALUES
+(101, 'Mathematics', 'Dr. Smith', 4),
+(102, 'Physics', 'Dr. Johnson', 3),
+(103, 'Chemistry', 'Dr. Brown', 3),
+(104, 'Biology', 'Dr. Lee', 4),
+(105, 'History', 'Dr. Taylor', 2);
+
+INSERT INTO enrollments VALUES
+(1, 1, 101, '2023-09-01'),
+(2, 1, 102, '2023-09-01'),
+(3, 2, 101, '2023-09-02'),
+(4, 3, 103, '2023-09-03'),
+(5, 4, 104, '2023-09-04'),
+(6, 5, 105, '2023-09-05');
+```
+
+Practice Questions
+1. Basic Queries
+Retrieve all columns from the students table.
+
+Retrieve the first_name and last_name of all active students.
+
+Retrieve the names of students who are older than 20.
+
+2. Filtering and Sorting
+Retrieve all students sorted by their last_name in ascending order.
+
+Retrieve the course_name and instructor for courses with more than 3 credits.
+
+Retrieve the student_id and course_id from the enrollments table where the enrollment date is after 2023-09-02.
+
+3. Joins
+Retrieve the first_name, last_name, and course_name for all students enrolled in courses.
+
+Retrieve the names of students who are enrolled in the course "Mathematics".
+
+Retrieve the course_name and the number of students enrolled in each course.
+
+4. Aggregation
+Retrieve the total number of active students.
+
+Retrieve the average age of students.
+
+Retrieve the course_name and the total credits of courses taught by "Dr. Smith".
+
+5. Subqueries
+Retrieve the names of students who are not enrolled in any course.
+
+Retrieve the course_name of courses that have no enrollments.
+
+Retrieve the names of students who are enrolled in more than one course.
+
+6. Data Manipulation
+Update the grade of student with student_id = 3 to 11.
+
+Delete all enrollments for the course "History".
+
+Insert a new student with the following details: student_id = 6, first_name = 'Eva', last_name = 'Green', age = 19, grade = 10, is_active = true.
 
 
