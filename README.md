@@ -539,3 +539,185 @@ This module focuses on hands-on implementation of Oracle Database concepts, incl
     ```
 
 ---
+
+# Oracle SQL Course Outline
+
+## 1. Introduction to Oracle SQL
+- Overview of SQL and its importance
+- Introduction to Oracle Database
+- Setting up Oracle SQL Developer or SQL*Plus
+
+## 2. Basic SQL Queries
+- **SELECT Statement**
+  - Syntax: `SELECT column1, column2 FROM table_name;`
+  - Example: `SELECT first_name, last_name FROM employees;`
+- **WHERE Clause**
+  - Syntax: `SELECT column1, column2 FROM table_name WHERE condition;`
+  - Example: `SELECT * FROM employees WHERE salary > 50000;`
+- **ORDER BY Clause**
+  - Syntax: `SELECT column1, column2 FROM table_name ORDER BY column1 ASC|DESC;`
+  - Example: `SELECT first_name, last_name FROM employees ORDER BY last_name ASC;`
+
+## 3. Data Manipulation Language (DML)
+- **INSERT Statement**
+  - Syntax: `INSERT INTO table_name (column1, column2) VALUES (value1, value2);`
+  - Example: `INSERT INTO employees (first_name, last_name) VALUES ('John', 'Doe');`
+- **UPDATE Statement**
+  - Syntax: `UPDATE table_name SET column1 = value1 WHERE condition;`
+  - Example: `UPDATE employees SET salary = 60000 WHERE employee_id = 101;`
+- **DELETE Statement**
+  - Syntax: `DELETE FROM table_name WHERE condition;`
+  - Example: `DELETE FROM employees WHERE employee_id = 102;`
+
+## 4. Data Definition Language (DDL)
+- **CREATE TABLE Statement**
+  - Syntax: `CREATE TABLE table_name (column1 datatype, column2 datatype, ...);`
+  - Example: `CREATE TABLE employees (employee_id NUMBER, first_name VARCHAR2(50), last_name VARCHAR2(50));`
+- **ALTER TABLE Statement**
+  - Syntax: `ALTER TABLE table_name ADD column_name datatype;`
+  - Example: `ALTER TABLE employees ADD email VARCHAR2(100);`
+- **DROP TABLE Statement**
+  - Syntax: `DROP TABLE table_name;`
+  - Example: `DROP TABLE employees;`
+
+## 5. Constraints
+- **Primary Key**
+  - Syntax: `CREATE TABLE table_name (column1 datatype PRIMARY KEY, column2 datatype);`
+  - Example: `CREATE TABLE employees (employee_id NUMBER PRIMARY KEY, first_name VARCHAR2(50));`
+- **Foreign Key**
+  - Syntax: `CREATE TABLE table_name (column1 datatype, column2 datatype, FOREIGN KEY (column1) REFERENCES other_table(column_name));`
+  - Example: `CREATE TABLE orders (order_id NUMBER, employee_id NUMBER, FOREIGN KEY (employee_id) REFERENCES employees(employee_id));`
+- **NOT NULL Constraint**
+  - Syntax: `CREATE TABLE table_name (column1 datatype NOT NULL, column2 datatype);`
+  - Example: `CREATE TABLE employees (employee_id NUMBER NOT NULL, first_name VARCHAR2(50));`
+- **UNIQUE Constraint**
+  - Syntax: `CREATE TABLE table_name (column1 datatype UNIQUE, column2 datatype);`
+  - Example: `CREATE TABLE employees (employee_id NUMBER UNIQUE, first_name VARCHAR2(50));`
+
+## 6. Joins
+- **INNER JOIN**
+  - Syntax: `SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;`
+  - Example: `SELECT employees.first_name, departments.department_name FROM employees INNER JOIN departments ON employees.department_id = departments.department_id;`
+- **LEFT JOIN**
+  - Syntax: `SELECT columns FROM table1 LEFT JOIN table2 ON table1.column = table2.column;`
+  - Example: `SELECT employees.first_name, departments.department_name FROM employees LEFT JOIN departments ON employees.department_id = departments.department_id;`
+- **RIGHT JOIN**
+  - Syntax: `SELECT columns FROM table1 RIGHT JOIN table2 ON table1.column = table2.column;`
+  - Example: `SELECT employees.first_name, departments.department_name FROM employees RIGHT JOIN departments ON employees.department_id = departments.department_id;`
+- **FULL OUTER JOIN**
+  - Syntax: `SELECT columns FROM table1 FULL OUTER JOIN table2 ON table1.column = table2.column;`
+  - Example: `SELECT employees.first_name, departments.department_name FROM employees FULL OUTER JOIN departments ON employees.department_id = departments.department_id;`
+
+## 7. Aggregare Functions
+- **COUNT**
+  - Syntax: `SELECT COUNT(column_name) FROM table_name;`
+  - Example: `SELECT COUNT(employee_id) FROM employees;`
+- **SUM**
+  - Syntax: `SELECT SUM(column_name) FROM table_name;`
+  - Example: `SELECT SUM(salary) FROM employees;`
+- **AVG**
+  - Syntax: `SELECT AVG(column_name) FROM table_name;`
+  - Example: `SELECT AVG(salary) FROM employees;`
+- **MIN**
+  - Syntax: `SELECT MIN(column_name) FROM table_name;`
+  - Example: `SELECT MIN(salary) FROM employees;`
+- **MAX**
+  - Syntax: `SELECT MAX(column_name) FROM table_name;`
+  - Example: `SELECT MAX(salary) FROM employees;`
+
+## 8. Group By and Having
+- **GROUP BY Clause**
+  - Syntax: `SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;`
+  - Example: `SELECT department_id, COUNT(employee_id) FROM employees GROUP BY department_id;`
+- **HAVING Clause**
+  - Syntax: `SELECT column1, COUNT(column2) FROM table_name GROUP BY column1 HAVING condition;`
+  - Example: `SELECT department_id, COUNT(employee_id) FROM employees GROUP BY department_id HAVING COUNT(employee_id) > 5;`
+
+## 9. Subqueries
+- **Single-Row Subquery**
+  - Syntax: `SELECT column1 FROM table_name WHERE column2 = (SELECT column2 FROM table_name WHERE condition);`
+  - Example: `SELECT first_name FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);`
+- **Multiple-Row Subquery**
+  - Syntax: `SELECT column1 FROM table_name WHERE column2 IN (SELECT column2 FROM table_name WHERE condition);`
+  - Example: `SELECT first_name FROM employees WHERE department_id IN (SELECT department_id FROM departments WHERE location_id = 1700);`
+
+## 10. Views
+- **CREATE VIEW**
+  - Syntax: `CREATE VIEW view_name AS SELECT column1, column2 FROM table_name WHERE condition;`
+  - Example: `CREATE VIEW high_salary_employees AS SELECT first_name, last_name FROM employees WHERE salary > 70000;`
+- **DROP VIEW**
+  - Syntax: `DROP VIEW view_name;`
+  - Example: `DROP VIEW high_salary_employees;`
+
+## 11. Indexes
+- **CREATE INDEX**
+  - Syntax: `CREATE INDEX index_name ON table_name (column1, column2);`
+  - Example: `CREATE INDEX idx_employee_name ON employees (first_name, last_name);`
+- **DROP INDEX**
+  - Syntax: `DROP INDEX index_name;`
+  - Example: `DROP INDEX idx_employee_name;`
+
+## 12. Transactions
+- **COMMIT**
+  - Syntax: `COMMIT;`
+  - Example: `UPDATE employees SET salary = 75000 WHERE employee_id = 101; COMMIT;`
+- **ROLLBACK**
+  - Syntax: `ROLLBACK;`
+  - Example: `UPDATE employees SET salary = 75000 WHERE employee_id = 101; ROLLBACK;`
+- **SAVEPOINT**
+  - Syntax: `SAVEPOINT savepoint_name;`
+  - Example: `SAVEPOINT before_update; UPDATE employees SET salary = 75000 WHERE employee_id = 101; ROLLBACK TO before_update;`
+
+## 13. Advanced SQL
+- **Window Functions**
+  - Syntax: `SELECT column1, ROW_NUMBER() OVER (ORDER BY column2) FROM table_name;`
+  - Example: `SELECT first_name, ROW_NUMBER() OVER (ORDER BY salary DESC) FROM employees;`
+- **Common Table Expressions (CTEs)**
+  - Syntax: `WITH cte_name AS (SELECT column1 FROM table_name) SELECT * FROM cte_name;`
+  - Example: `WITH high_salary AS (SELECT * FROM employees WHERE salary > 70000) SELECT * FROM high_salary;`
+- **PIVOT and UNPIVOT**
+  - Syntax: `SELECT * FROM (SELECT column1, column2 FROM table_name) PIVOT (aggregate_function(column2) FOR column1 IN (value1, value2));`
+  - Example: `SELECT * FROM (SELECT department_id, salary FROM employees) PIVOT (AVG(salary) FOR department_id IN (10, 20, 30));`
+
+## 14. Performance Tuning
+- **EXPLAIN PLAN**
+  - Syntax: `EXPLAIN PLAN FOR SELECT * FROM table_name;`
+  - Example: `EXPLAIN PLAN FOR SELECT * FROM employees WHERE salary > 50000;`
+- **Index Optimization**
+  - Example: `CREATE INDEX idx_salary ON employees (salary);`
+- **Query Refactoring**
+  - Example: Refactor subqueries to joins for better performance.
+
+## 15. PL/SQL Basics
+- **PL/SQL Block Structure**
+  - Syntax: `DECLARE ... BEGIN ... END;`
+  - Example: `DECLARE v_name VARCHAR2(50); BEGIN SELECT first_name INTO v_name FROM employees WHERE employee_id = 101; END;`
+- **Cursors**
+  - Syntax: `DECLARE CURSOR cursor_name IS SELECT column1 FROM table_name;`
+  - Example: `DECLARE CURSOR emp_cursor IS SELECT first_name FROM employees;`
+- **Stored Procedures**
+  - Syntax: `CREATE OR REPLACE PROCEDURE procedure_name IS BEGIN ... END;`
+  - Example: `CREATE OR REPLACE PROCEDURE increase_salary IS BEGIN UPDATE employees SET salary = salary * 1.1; END;`
+- **Functions**
+  - Syntax: `CREATE OR REPLACE FUNCTION function_name RETURN datatype IS BEGIN ... END;`
+  - Example: `CREATE OR REPLACE FUNCTION get_employee_name (emp_id NUMBER) RETURN VARCHAR2 IS v_name VARCHAR2(50); BEGIN SELECT first_name INTO v_name FROM employees WHERE employee_id = emp_id; RETURN v_name; END;`
+
+## 16. Security
+- **User Management**
+  - Syntax: `CREATE USER username IDENTIFIED BY password;`
+  - Example: `CREATE USER john_doe IDENTIFIED BY password123;`
+- **Granting Privileges**
+  - Syntax: `GRANT privilege ON object TO user;`
+  - Example: `GRANT SELECT ON employees TO john_doe;`
+- **Revoking Privileges**
+  - Syntax: `REVOKE privilege ON object FROM user;`
+  - Example: `REVOKE SELECT ON employees FROM john_doe;`
+
+## 17. Backup and Recovery
+- **Exporting Data**
+  - Example: `EXPDP username/password DIRECTORY=dir_name DUMPFILE=file_name.dmp TABLES=table_name;`
+- **Importing Data**
+  - Example: `IMPDP username/password DIRECTORY=dir_name DUMPFILE=file_name.dmp TABLES=table_name;`
+
+
+
